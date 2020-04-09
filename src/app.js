@@ -11,7 +11,6 @@ const repositories = [];
 /*
 function validateRepositoryId(request, response, next){
   const { id } = request.params;
-
   if(!isUuid(id)){
     return response.status(400).json({error: "Invalid repository Id"})
   }
@@ -31,7 +30,7 @@ app.post("/repositories", (request, response) => {
     title,
     url,
     techs,
-    likes:0,
+    likes : 0,
   };
   
   repositories.push(repository);
@@ -48,7 +47,8 @@ app.put("/repositories/:id", (request, response) => {
   if(repositoryIndex < 0){ return response.status(400).json({error:"Repository not found"});}
 
   const repository = {
-    id,
+    ...repositories[repositoryIndex],
+    id, 
     title,
     url,
     techs,
